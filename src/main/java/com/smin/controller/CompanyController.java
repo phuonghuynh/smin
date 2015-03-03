@@ -4,7 +4,6 @@ import com.smin.service.CompanyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
@@ -17,8 +16,8 @@ public class CompanyController {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(CompanyController.class);
 
-  @Resource
-  private SimpMessagingTemplate messagingTemplate;
+//  @Resource
+//  private SimpMessagingTemplate messagingTemplate;
 
   @Value("${sudo.pwd}")
   private String sudoPwd;
