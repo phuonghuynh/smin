@@ -1,24 +1,27 @@
 <div>
   <h4>Companies</h4>
-  <table class="table table-responsive table-hover companies" table-height="300px" fixed-header>
-    <thead>
-    <tr>
-      <th>Install Name</th>
-      <th>Public domain</th>
-      <th>Sys Report</th>
-    </tr>
-    </thead>
-    <tbody ng-repeat="company in companies">
-    <tr>
-      <td>{{company.installName}}</td>
-      <td>{{company.publicDomain}}</td>
-      <td><div ng-bind-html-unsafe="company.sysReport"></div></td>
-    </tr>
-    </tbody>
-  </table>
-  <div class="wrapper">
-      <span class="group-btn">
-        <a class="btn btn-primary btn-md" ng-click="">Add New <i class="fa fa-user-plus"></i></a>
-      </span>
-  </div>
+
+    <table class="table table-condensed table-hover">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <!--<th>Type</th>-->
+      </tr>
+      </thead>
+      <tbody ng-repeat="company in companies">
+      <tr>
+        <td>{{company.name}}</td>
+        <td>{{company.desc}}</td>
+        <!--<td>{{company.type}}</td>-->
+        <!--<td><div ng-bind-html-unsafe="company.sysReport"></div></td>-->
+      </tr>
+      </tbody>
+    </table>
+  <!--</div>-->
+  <!--<div class="wrapper">-->
+      <!--<span class="group-btn">-->
+        <!--<a class="btn btn-primary btn-md" ng-click="addNew()">Add New <i class="fa fa-user-plus"></i></a>-->
+      <!--</span>-->
+  <!--</div>-->
 </div>

@@ -46,14 +46,14 @@
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <!--<button ng-click="setting()" class="btn btn-link" ng-show="{{userInfo === undefined}}"><i class="fa fa-code"></i>Setting</button>-->
+          <button ng-click="setting()" class="btn btn-link" ng-show="$root.userInfo !== undefined"><i class="fa fa-code"></i>Setting</button>
         </li>
       </ul>
     </nav>
     <div class="col-md-offset-1 col-md-3">
-      <ul ng-show="{{userInfo !== undefined}}" class="nav nav-pills nav-stacked leftMenu">
+      <ul ng-show="$root.userInfo !== undefined" class="nav nav-pills nav-stacked leftMenu">
         <li class="active"><a href="#/company/list">Home</a></li>
-        <li><a href="#/company/registration">Company registration</a></li>
+        <!--<li><a href="#/company/registration">Company list</a></li>-->
         <!--<li><a href="#/company/registration-konsole">Console log</a></li>-->
         <li><a href="#/entrance/setting">Setting</a></li>
         <li><a href="#/signOut">Sign out</a></li>
@@ -81,11 +81,11 @@
 <script src="bower_components/cafej/src/misc.js" charset="utf-8"></script>
 <script src="bower_components/ansi_up/ansi_up.js" charset="utf-8"></script>
 <script src="bower_components/angu-fixed-header-table/angu-fixed-header-table.js" charset="utf-8"></script>
+<script src="bower_components/RWD-Table-Patterns/dist/js/rwd-table.js" charset="utf-8"></script>
 <script src="bower_components/alertify.js/lib/alertify.js" charset="utf-8"></script>
 <!-- endbower -->
 
 <script src="modules/app.js"></script>
-<script src="modules/common/connection.fac.js"></script>
 <script src="modules/company/company.js"></script>
 <script src="modules/entrance/entrance.js"></script>
 

@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
 /**
  * Created by phuonghqh on 2/15/15.
  */
-public class InputStreamTask extends Thread {
+public class XtupleInputStreamTask extends Thread {
 
   private StringBuilder sysReportBuilder;
 
@@ -22,8 +22,8 @@ public class InputStreamTask extends Thread {
 
   private String destination;
 
-  public InputStreamTask(InputStream inputStream, Logger logger,
-                         SimpMessagingTemplate messagingTemplate, String destination, StringBuilder sysReportBuilder) {
+  public XtupleInputStreamTask(InputStream inputStream, Logger logger,
+                               SimpMessagingTemplate messagingTemplate, String destination, StringBuilder sysReportBuilder) {
     this.inputStream = new BufferedReader(new InputStreamReader(inputStream));
     this.logger = logger;
     this.messagingTemplate = messagingTemplate;

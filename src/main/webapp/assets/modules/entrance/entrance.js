@@ -16,6 +16,15 @@ smin.controller("entranceSignInController", function ($scope, $location, $rootSc
         $rootScope.userInfo = undefined;
       });
   }
+
+  $('.form-login input').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      $("a.loginButton").trigger("click");
+      return false;
+    }
+  });
+
 });
 
 smin.controller("entranceSettingController", function ($scope, $location, $rootScope, $http) {

@@ -1,12 +1,21 @@
 package com.smin.controller;
 
+import com.smin.dto.CompanyInfo;
+import com.smin.dto.Result;
 import com.smin.service.CompanyService;
+import com.smin.service.SService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by phuonghqh on 2/15/15.
@@ -19,8 +28,8 @@ public class CompanyController {
 //  @Resource
 //  private SimpMessagingTemplate messagingTemplate;
 
-  @Value("${sudo.pwd}")
-  private String sudoPwd;
+//  @Value("${sudo.pwd}")
+//  private String sudoPwd;
 
   @Value("${db.host}")
   private String dbHost;
@@ -31,30 +40,33 @@ public class CompanyController {
   @Value("${db.password}")
   private String dbPassword;
 
-  @Value("${smin.cmd.install}")
-  private String installCmd;
+  @Value("${db.driverClass}")
+  private String dbDriverClass;
+
+//  @Value("${smin.cmd.install}")
+//  private String installCmd;
 
   @Resource
   private CompanyService companyService;
 
-//  @ResponseBody
-//  @RequestMapping(value = "/company", method = RequestMethod.GET)
-//  public List<CompanyInfo> all() {
-//    List<CompanyInfo> companyInfos = new ArrayList<>();
-//    Base.open("org.postgresql.Driver", dbHost, dbUsername, dbPassword);
-//    List<Company> companies = Company.findAll();
-//    for (Company company : companies) {
-//      CompanyInfo companyInfo = CompanyInfo.CompanyInfoBuilder.companyInfo()
-//        .withInstallName(company.get("_installName").toString())
-//        .withPublicDomain(company.get("_publicDomain").toString())
-//        .withSysReport(company.get("_sysReport").toString())
-//        .withAdminPassword(company.get("_adminPassword").toString()).build();
-//      companyInfos.add(companyInfo);
-//    }
-//    Base.close();
-//    return companyInfos;
-//  }
-//
+//  @Resource
+//  private ApplicationContext applicationContext;
+
+  @ResponseBody
+  @RequestMapping(value = "/company", method = RequestMethod.GET)
+  public List<CompanyInfo> all() {
+    return companyService.findAll();
+  }
+
+  @ResponseBody
+  @RequestMapping(value = "/company/register", method = RequestMethod.POST)
+  public void register(@RequestBody CompanyInfo companyInfo) {
+    companyService.register(companyInfo);
+//    SService service = applicationContext.getBean(companyInfo.getType() + "Service", SService.class);
+//    return service.doService(companyInfo);
+  }
+
+
 //
 //  @MessageMapping("/user/company/register")
 //  public void register(CompanyInfo companyInfo) {

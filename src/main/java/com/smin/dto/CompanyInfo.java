@@ -4,87 +4,42 @@ package com.smin.dto;
  * Created by phuonghqh on 2/15/15.
  */
 public class CompanyInfo {
-  private String installName;
+  private String name;
 
-  private String adminPassword;
+  private String desc;
 
-  private String publicDomain;
+  private String type;
 
-  private String sysReport;
-
-  public String getSysReport() {
-    return sysReport;
+  public CompanyInfo() {
   }
 
-  public void setSysReport(String sysReport) {
-    this.sysReport = sysReport;
+  public CompanyInfo(String name, String desc, String type) {
+    this.name = name;
+    this.desc = desc;
+    this.type = type;
   }
 
-  public String getInstallName() {
-    return installName;
+  public String getName() {
+    return name;
   }
 
-  public void setInstallName(String installName) {
-    this.installName = installName;
+  public void setName(String name) {
+    this.name = name;
   }
 
-  public String getAdminPassword() {
-    return adminPassword;
+  public String getDesc() {
+    return desc;
   }
 
-  public void setAdminPassword(String adminPassword) {
-    this.adminPassword = adminPassword;
+  public void setDesc(String desc) {
+    this.desc = desc;
   }
 
-  public String getPublicDomain() {
-    return publicDomain;
+  public String getType() {
+    return type;
   }
 
-  public void setPublicDomain(String publicDomain) {
-    this.publicDomain = publicDomain;
+  public void setType(String type) {
+    this.type = type;
   }
-
-  public static class CompanyInfoBuilder
-    {
-        private CompanyInfo companyInfo;
-
-        private CompanyInfoBuilder()
-        {
-            companyInfo = new CompanyInfo();
-        }
-
-        public CompanyInfoBuilder withInstallName(String installName)
-        {
-            companyInfo.installName = installName;
-            return this;
-        }
-
-        public CompanyInfoBuilder withAdminPassword(String adminPassword)
-        {
-            companyInfo.adminPassword = adminPassword;
-            return this;
-        }
-
-        public CompanyInfoBuilder withPublicDomain(String publicDomain)
-        {
-            companyInfo.publicDomain = publicDomain;
-            return this;
-        }
-
-        public CompanyInfoBuilder withSysReport(String sysReport)
-        {
-            companyInfo.sysReport = sysReport;
-            return this;
-        }
-
-        public static CompanyInfoBuilder companyInfo()
-        {
-            return new CompanyInfoBuilder();
-        }
-
-        public CompanyInfo build()
-        {
-            return companyInfo;
-        }
-    }
 }

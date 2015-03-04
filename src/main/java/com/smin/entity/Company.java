@@ -5,5 +5,5 @@ import org.javalite.activejdbc.Model;
 /**
  * Created by phuonghqh on 2/15/15.
  */
-public class OrpmCompany extends Model {
+public class Company extends Model {
 }

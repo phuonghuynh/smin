@@ -5,7 +5,7 @@ var baseUrl = (function () {
 })();
 
 var smin = angular.module("Smin", [
-  "ngResource", "ngCookies", "ngRoute", "anguFixedHeaderTable"
+  "ngResource", "ngCookies", "ngRoute"
 ]);
 
 smin.config(["$routeProvider", function ($routeProvider) {
@@ -30,21 +30,21 @@ smin.config(["$routeProvider", function ($routeProvider) {
       templateUrl: "modules/entrance/setting.html",
       controller: "entranceSettingController"
     })
-    .when("/company/list", {
-      templateUrl: "modules/company/list.html",
-      controller: "companyListController"
-    })
+    //.when("/company/list", {
+    //  templateUrl: "modules/company/list.html",
+    //  controller: "companyListController"
+    //})
     .otherwise({
-      redirectTo: "/company/list"
+      redirectTo: "/company/registration"
     });
 }]);
 
-smin.run(function (connectionFactory, $rootScope, $location) {
+smin.run(function ($rootScope, $location) {
   $(".leftMenu > li").click(function (e) {
     $(".leftMenu > li").removeClass("active");
     $(e.currentTarget).addClass("active");
   });
-  connectionFactory.reconnect();
+
 
   $rootScope.$on('$routeChangeSuccess', function (event, next, current) {
     if (!/\/signIn\//i.test($location.path())) {
