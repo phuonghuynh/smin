@@ -1,6 +1,7 @@
 package com.smin.service;
 
 import com.smin.dto.CompanyInfo;
+import com.smin.dto.Result;
 import org.javalite.activejdbc.Base;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,15 +47,16 @@ public class CompanyService {
 //    return companyInfos;
 //  }
 
-  public void register(CompanyInfo companyInfo) {
+  public Result register(CompanyInfo companyInfo) {
     SService service = applicationContext.getBean(companyInfo.getType() + "Service", SService.class);
     try {
-      service.doService(companyInfo);
+      return service.doService(companyInfo);
     }
     catch (Exception e) {
       LOGGER.error("Error: ", e);
     }
 //    save(companyInfo);
+    return null;
   }
 
 //  private void save(CompanyInfo companyInfo) {

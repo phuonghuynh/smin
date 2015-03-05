@@ -58,8 +58,7 @@ public class CompanyController {
   @ResponseBody
   @RequestMapping(value = "/company/register", method = RequestMethod.POST)
   public Result register(@RequestBody CompanyInfo companyInfo) {
-    companyService.register(companyInfo);
-    return Result.Success;
+    return companyService.register(companyInfo);
 //    SService service = applicationContext.getBean(companyInfo.getType() + "Service", SService.class);
 //    return service.doService(companyInfo);
   }

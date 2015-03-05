@@ -60,43 +60,11 @@ public class OrpmService implements SService {
         LOGGER.debug("Change permission for {}", path.toString());
       }
       catch (Exception e) {
-//        throw new UnsupportedOperationException("Error internal");
       }
     });
 
-    Result success = Result.Success;
+    Result success = Result.getSuccess();
     success.setMessage("Done!! Go to link: " + String.format(link, companyInfo.getName()) + " to continue the process!");
     return success;
-  }
-
-  public static void main(String[] arg) throws IOException {
-//    FileUtils.copyDirectory(new File("sample/abc"), new File("sample/def"));
-
-    String output = "sample/demo/";
-    ZipUtil.unpack(new File("src/main/resources/soft/orpm.zip"), new File(output));
-    Files.move(Paths.get(output + "orpm/"), Paths.get(output + "sampleApp/"));
-
-    Set<PosixFilePermission> perms = new HashSet<PosixFilePermission>();
-    //add owners permission
-    perms.add(PosixFilePermission.OWNER_READ);
-    perms.add(PosixFilePermission.OWNER_WRITE);
-    perms.add(PosixFilePermission.OWNER_EXECUTE);
-    //add group permissions
-    perms.add(PosixFilePermission.GROUP_READ);
-    perms.add(PosixFilePermission.GROUP_WRITE);
-    perms.add(PosixFilePermission.GROUP_EXECUTE);
-    //add others permissions
-    perms.add(PosixFilePermission.OTHERS_READ);
-    perms.add(PosixFilePermission.OTHERS_WRITE);
-    perms.add(PosixFilePermission.OTHERS_EXECUTE);
-
-    Files.walk(Paths.get(output), FileVisitOption.FOLLOW_LINKS).forEach(path -> {
-      try {
-        Files.setPosixFilePermissions(path, perms);
-      }
-      catch (Exception e) {
-      }
-    });
-
   }
 }
