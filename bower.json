@@ -1,5 +1,5 @@
 {
-  "name": "xtuple-cms",
+  "name": "smin",
   "dependencies": {
     "jquery": "latest",
     "bootstrap": "latest",
@@ -14,7 +14,7 @@
     "bootswatch": "latest",
     "ansi_up": "latest",
     "angu-fixed-header-table": "latest",
-    "alertify.js": "latest"
+    "notifyjs": "latest"
   },
   "overrides": {
     "jquery": {
@@ -28,6 +28,9 @@
     },
     "stomp-websocket": {
       "main": "lib/stomp.min.js"
+    },
+    "notifyjs": {
+      "main": "dist/notify-combined.min.js"
     }
   },
   "resolutions": {

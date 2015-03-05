@@ -10,6 +10,8 @@ public class Result {
 
   private Object hit;
 
+  public final static Result Success = new Result(200, "Successful action", null);
+
   public Result(Integer status, String message, Object hit) {
     this.status = status;
     this.message = message;

@@ -24,3 +24,5 @@ override.properties
 hs_err_pid*
 
 soft/
+
+.sass-cache/

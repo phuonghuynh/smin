@@ -44,7 +44,10 @@ smin.run(function ($rootScope, $location) {
     $(".leftMenu > li").removeClass("active");
     $(e.currentTarget).addClass("active");
   });
-
+  $.notify.defaults({
+    globalPosition: 'bottom right',
+    autoHide: false
+  })
 
   $rootScope.$on('$routeChangeSuccess', function (event, next, current) {
     if (!/\/signIn\//i.test($location.path())) {

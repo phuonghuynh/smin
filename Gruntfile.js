@@ -3,7 +3,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON("package.json"),
 
     clean: {
-      build: ["<%=pkg.public%>", "<%=pkg.assets%>css", "<%=pkg.assets%>bower_components", "<%=pkg.assets%>index.html"],
+      build: ["<%=pkg.public%>", "<%=pkg.assets%>bower_components", "<%=pkg.assets%>index.html"],
       mvn: ["<%=pkg.public%>"]
     },
 
@@ -23,7 +23,7 @@ module.exports = function (grunt) {
           {
             cwd: "<%=pkg.public%>",
             expand: true,
-            src: ["bower_components/**", "css/**", "index.html"],
+            src: ["bower_components/**", "index.html"],
             dest: "<%=pkg.assets%>"
           }
         ]
@@ -78,36 +78,36 @@ module.exports = function (grunt) {
       }
     },
 
-    watch: {
-      scripts: {
-        files: ["*.js", "*.json"],
-        options: {
-          livereload: true
-        }
-      },
-      markup: {
-        files: ["*.html"],
-        options: {
-          livereload: true
-        }
-      },
-      stylesheets: {
-        files: ["*.css"],
-        options: {
-          livereload: true
-        }
-      }
-    },
+    //watch: {
+    //  scripts: {
+    //    files: ["*.js", "*.json"],
+    //    options: {
+    //      livereload: true
+    //    }
+    //  },
+    //  markup: {
+    //    files: ["*.html"],
+    //    options: {
+    //      livereload: true
+    //    }
+    //  },
+    //  stylesheets: {
+    //    files: ["*.css"],
+    //    options: {
+    //      livereload: true
+    //    }
+    //  }
+    //},
 
-    connect: {
-      server: {
-        options: {
-          port: 8080,
-          base: "src/main/webapp/assets",
-          keepalive: true
-        }
-      }
-    },
+    //connect: {
+    //  server: {
+    //    options: {
+    //      port: 8080,
+    //      base: "src/main/webapp/assets",
+    //      keepalive: true
+    //    }
+    //  }
+    //},
 
     ngAnnotate: {
       main: {
@@ -119,23 +119,23 @@ module.exports = function (grunt) {
           dest: "<%=pkg.public%>"
         }]
       }
-    },
-
-    sass: {
-      options: {
-        sourceMap: false,
-        imagePath: "../images"
-      },
-      dist: {
-        files: [{
-          cwd: "<%=pkg.public%>/scss",
-          expand: true,
-          src: ['*.scss'],
-          ext: ".css",
-          dest: "<%=pkg.public%>/css"
-        }]
-      }
     }
+
+    //sass: {
+    //  options: {
+    //    sourceMap: false,
+    //    imagePath: "../images"
+    //  },
+    //  dist: {
+    //    files: [{
+    //      cwd: "<%=pkg.public%>/scss",
+    //      expand: true,
+    //      src: ['*.scss'],
+    //      ext: ".css",
+    //      dest: "<%=pkg.public%>/css"
+    //    }]
+    //  }
+    //}
   });
 
   grunt.loadNpmTasks("grunt-contrib-watch");
@@ -148,25 +148,27 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks("grunt-ng-annotate");
   grunt.loadNpmTasks("grunt-sass");
 
-  grunt.registerTask("mvn", [
-    "clean:mvn",
-    "copy:build",
-    "bower-install-simple:build",
-    "includeSource:target",
-    "wiredep:target",
-    "ngAnnotate:main"
-  ]);
+  //grunt.registerTask("mvn", [
+  //  "clean:mvn",
+  //  "copy:build",
+  //  "bower-install-simple:build",
+  //  "includeSource:target",
+  //  "wiredep:target",
+  //  "ngAnnotate:main"
+  //]);
 
   grunt.registerTask("build", [
     "clean:build",
     "copy:build",
-    "sass",
     "bower-install-simple:build",
     "includeSource:target",
     "wiredep:target",
-    "ngAnnotate:main"
+    "ngAnnotate:main",
+    "copy:dev",
+    "clean:mvn"
   ]);
 
   //grunt.registerTask("jetty", ["build", "copy:dev"]);
-  grunt.registerTask("dev", ["build", "copy:dev", "connect", "watch"]);
+  //grunt.registerTask("dev", ["build", "copy:dev"]);
+  //grunt.registerTask("dev", ["build", "copy:dev", "connect", "watch"]);
 };

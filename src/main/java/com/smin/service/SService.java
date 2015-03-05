@@ -7,5 +7,5 @@ import com.smin.dto.Result;
  * Created by phuonghqh on 3/3/15.
  */
 public interface SService {
-  void doService(CompanyInfo companyInfo);
+  Result doService(CompanyInfo companyInfo) throws Exception;
 }

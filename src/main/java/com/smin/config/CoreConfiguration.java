@@ -3,6 +3,7 @@ package com.smin.config;
 
 import org.jasypt.util.text.BasicTextEncryptor;
 import org.jasypt.util.text.TextEncryptor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
@@ -19,6 +20,7 @@ public class CoreConfiguration {
   @Resource
   private Environment environment;
 
+
   @Bean
   public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
     return new PropertySourcesPlaceholderConfigurer();
@@ -30,6 +32,8 @@ public class CoreConfiguration {
     textEncryptor.setPassword(environment.getProperty("core.textEncryptor.password"));
     return textEncryptor;
   }
+
+
 
 //  public static void main(String[] args) {
 //    BasicTextEncryptor abc = new BasicTextEncryptor();

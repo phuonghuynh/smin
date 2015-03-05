@@ -23,9 +23,9 @@ public class ShellService {
       Process process = Runtime.getRuntime().exec(cmd);
       StringBuilder sysReportBuilder = new StringBuilder();
       Thread[] threads = new Thread[]{
-        new StringStreamTask(process.getInputStream(), (output) -> {
+        new StringStreamTask(process.getInputStream(), output -> {
         }),
-        new StringStreamTask(process.getErrorStream(), (output) -> {
+        new StringStreamTask(process.getErrorStream(), output -> {
         })
       };
       for (Thread t : threads) {

@@ -3,11 +3,9 @@ package com.smin.controller;
 import com.smin.dto.CompanyInfo;
 import com.smin.dto.Result;
 import com.smin.service.CompanyService;
-import com.smin.service.SService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by phuonghqh on 2/15/15.
@@ -52,16 +49,17 @@ public class CompanyController {
 //  @Resource
 //  private ApplicationContext applicationContext;
 
-  @ResponseBody
-  @RequestMapping(value = "/company", method = RequestMethod.GET)
-  public List<CompanyInfo> all() {
-    return companyService.findAll();
-  }
+//  @ResponseBody
+//  @RequestMapping(value = "/company", method = RequestMethod.GET)
+//  public List<CompanyInfo> all() {
+//    return companyService.findAll();
+//  }
 
   @ResponseBody
   @RequestMapping(value = "/company/register", method = RequestMethod.POST)
-  public void register(@RequestBody CompanyInfo companyInfo) {
+  public Result register(@RequestBody CompanyInfo companyInfo) {
     companyService.register(companyInfo);
+    return Result.Success;
 //    SService service = applicationContext.getBean(companyInfo.getType() + "Service", SService.class);
 //    return service.doService(companyInfo);
   }
