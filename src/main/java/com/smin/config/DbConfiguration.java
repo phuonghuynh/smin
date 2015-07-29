@@ -24,7 +24,7 @@ public class DbConfiguration {
   public Flyway flyway() {
     Flyway flyway = new Flyway();
     flyway.setDataSource(dbHost, dbUsername, dbPassword);
-    flyway.migrate();
+    flyway.isInitOnMigrate();
     return flyway;
   }
 }
